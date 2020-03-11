@@ -1,0 +1,31 @@
+{
+  "name": "viber-bot-node-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "countries-and-timezones": "^2.0.5",
+    "cron": "^1.7.2",
+    "mongoose": "^5.6.7",
+    "viber-bot": "^1.0.14"
+  },
+  "devDependencies": {
+    "@types/countries-and-timezones": "^2.0.2",
+    "@types/cron": "^1.7.1",
+    "@types/mongoose": "^5.5.11",
+    "@types/node": "^10.14.13",
+    "typescript": "^3.5.3"
+  },
+  "author": "Preslav",
+  "license": "ISC",
+  "keywords": [
+    "viber",
+    "bot",
+    "node",
+    "starter"
+  ]
+}
