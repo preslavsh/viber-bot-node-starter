@@ -3,7 +3,7 @@ import { IViberBot } from './viber.interfaces';
 import { initShareHandler } from './share/share.handler';
 import { initRandomHandler } from './random/random.handler';
 import * as mongoose from 'mongoose';
-import * as mdb from './mongodb';
+import mdb from './mongodb';
 import { initSubscribeHandler } from './subscribe/subscribe.handler';
 import {
     CHAT_BOT_AVATAR,

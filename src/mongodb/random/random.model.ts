@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { SchemasName } from "../index";
 const Schema = mongoose.Schema;
 
 export const ViberRandomSchema = new Schema({
@@ -6,4 +7,4 @@ export const ViberRandomSchema = new Schema({
     text: String,
 });
 
-mongoose.model('ViberRandom', ViberRandomSchema);
+mongoose.model(SchemasName.ViberRandom, ViberRandomSchema);

@@ -6,7 +6,7 @@ import {
     NGROK_URL,
     VIBER_TOKEN_LOCAL
 } from "../common/common.contants";
-import * as mdb from '../mongodb';
+import mdb from '../mongodb';
 import { IMDB } from '../mongodb';
 import * as mongoose from "mongoose";
 import { UserCache } from "../index";
@@ -44,13 +44,6 @@ bot.onError((error: any)=>{
 });
 
 let connection: typeof mongoose;
-
-const shouldBroadcastValidators = {
-    '30': (hour: number): boolean => hour > 10 && hour < 18 && hour != 12,
-    '60': (hour: number): boolean =>[11, 14, 15, 16, 17].some((broadcastHour)=>broadcastHour === hour),
-    '120': (hour: number): boolean =>[11, 14, 16].some((broadcastHour)=>broadcastHour === hour),
-    '180': (hour: number): boolean =>[14, 17].some((broadcastHour)=>broadcastHour === hour),
-};
 
 const calculateUserTime = (offset: string,): Date => {
     const serverDate = new Date();
@@ -95,9 +88,12 @@ const broadcastToSingleUser = async (bot: IViberBot, currentUser: UserCache, sho
     }
 };
 
+const shouldBroadcastValidator = (): boolean =>  {
+    return true;
+};
+
 const broadcastMessages = async (bot: IViberBot, mdb: IMDB, time: number, logger: LoggerFacade)=> {
-    const shouldBroadcastValidator = shouldBroadcastValidators[time];
-    const mongooseUsers = await mdb.userController.findAllSubscribedWithConsent(time);
+    const mongooseUsers = await mdb.userService.findAllSubscribed();
     const users = mongooseUsers.map((user)=>user.toJSON());
     console.log('==============================================================');
     console.log(`Running job on every ${time} with users length: ${users.length}`);

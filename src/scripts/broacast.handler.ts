@@ -61,11 +61,11 @@ const broadcastToSingleUser = async (
 };
 
 const shouldBroadcastValidator = (): boolean =>  {
-    return false;
+    return true;
 };
 
 const broadcastMessages = async (bot: IViberBot, mdb: IMDB, time: number, logger: LoggerFacade)=> {
-    const mongooseUsers = await mdb.userController.findAllSubscribedWithConsent(time);
+    const mongooseUsers = await mdb.userService.findAllSubscribed();
     const users = mongooseUsers.map((user)=>user.toJSON());
     console.log('==============================================================');
     console.log( `Running job on every ${time} with users length: ${users.length}`);

@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { SchemasName } from "../index";
 const Schema = mongoose.Schema;
 
 export const ViberUserSchema = new Schema({
@@ -10,4 +11,4 @@ export const ViberUserSchema = new Schema({
     // TODO: Track consent for notifications
 });
 
-mongoose.model('ViberUser', ViberUserSchema);
+mongoose.model(SchemasName.ViberUser, ViberUserSchema);

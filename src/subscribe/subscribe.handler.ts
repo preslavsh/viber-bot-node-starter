@@ -12,11 +12,11 @@ export const initSubscribeHandler = (bot: IViberBot, mdb: IMDB, cache: Cache, lo
         const viberId = response.userProfile.id;
         const country = response.userProfile.country;
         const language = response.userProfile.language;
-        const user = await mdb.userController.findUserByViberId(viberId);
+        const user = await mdb.userService.findUserByViberId(viberId);
 
         if(!user) {
-            mdb.userController
-                .registerUser( { viberId, country, language })
+            mdb.userService
+                .register( { viberId, country, language })
                 .then(console.log)
                 .catch(console.error);
         }
@@ -30,7 +30,7 @@ export const initSubscribeHandler = (bot: IViberBot, mdb: IMDB, cache: Cache, lo
     });
 
     bot.onUnsubscribe((viberId: string) => {
-        mdb.userController.updateSubscribed(viberId, false);
+        mdb.userService.updateSubscribed(viberId, false);
         logger.track(LoggerMessage.UnSubscribed);
     });
 
