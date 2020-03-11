@@ -85,6 +85,18 @@ const broadcastToSingleUser = async (bot: IViberBot, currentUser: UserCache, sho
         console.log(`broadcastToSingleUser Message was sent to user with id: ${ currentUserId }`);
     } catch (error) {
         console.error(`broadcastToSingleUser error: ${JSON.stringify(error)}: currentUserId: ${currentUserId}`);
+        if(error && error.status === 5 && error.status_message === 'receiverNotRegistered') {
+            mdb.userService.updateSubscribed(currentUserId, false);
+        }
+        if(error && error.status === 6 && error.status_message === 'notSubscribed') {
+            mdb.userService.updateSubscribed(currentUserId, false);
+        }
+        if(error && error.status === 13 && error.status_message === 'apiVersionNotSupported') {
+            // TODO: Implement stop him from receiving notifications
+        }
+        if(error && error.status === 11 && error.status_message === 'receiverNoSuitableDevice') {
+            // TODO: Implement stop him from receiving notifications
+        }
     }
 };
 

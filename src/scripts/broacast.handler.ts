@@ -46,10 +46,10 @@ const broadcastToSingleUser = async (
     } catch (error) {
         console.error(`broadcastToSingleUser error: ${JSON.stringify(error)}: currentUserId: ${currentUserId}`);
         if(error && error.status === 5 && error.status_message === 'receiverNotRegistered') {
-            // TODO: Implement unsubscribe
+            mdb.userService.updateSubscribed(currentUserId, false);
         }
         if(error && error.status === 6 && error.status_message === 'notSubscribed') {
-            // TODO: Implement unsubscribe
+            mdb.userService.updateSubscribed(currentUserId, false);
         }
         if(error && error.status === 13 && error.status_message === 'apiVersionNotSupported') {
             // TODO: Implement stop him from receiving notifications
