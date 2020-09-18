@@ -1,8 +1,8 @@
 import { IViberBot, ViberResponse, ViberTextMessage } from '../viber.interfaces';
 import { getRandomPattern } from "./random.constants";
-import { TextMessage, UrlMessage } from "../common/common.contants";
 import { LoggerFacade } from "../logger";
 import { IMDB } from "../mongodb";
+import { TextMessage, UrlMessage } from '../common/viber.constants';
 
 const trackShareAction = (message: ViberTextMessage, logger: LoggerFacade, mdb: IMDB)=>{
     // TODO: Track random inputs as URL

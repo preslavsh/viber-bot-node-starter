@@ -1,11 +1,11 @@
 import { IViberBot, ViberResponse, ViberTextMessage, ViberUserProfile } from '../viber.interfaces';
 import { greetingsKeyboard } from './greeting.constants';
-import { getNewTextMessage, mainMenuKeyboard, } from '../common/common.contants';
 import { BEGIN } from '../random/random.constants';
 import { IMDB } from '../mongodb';
 import { MESSAGE_TEXT } from "../common/messages-text";
 import { LoggerFacade, LoggerMessage } from "../logger";
 import { Cache } from "../cache";
+import { getNewTextMessage, mainMenuKeyboard } from "../common/common.utils";
 
 export const initGreetingsHandler = (bot: IViberBot, mdb: IMDB, cache: Cache, logger: LoggerFacade) => {
 

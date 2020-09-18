@@ -1,5 +1,5 @@
-import { secondaryColor } from '../common/common.contants';
 import { ActionType, IViberCarousel } from '../viber.interfaces';
+import { secondaryColor } from "../common/common.utils";
 
 export const shareCarouselButtonDefaultProperties = {
     Columns: 3,

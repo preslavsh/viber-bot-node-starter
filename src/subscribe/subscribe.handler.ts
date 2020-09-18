@@ -1,10 +1,10 @@
 import { IViberBot, ViberResponse } from '../viber.interfaces';
 import { IMDB } from '../mongodb';
 import { LoggerFacade, LoggerMessage } from "../logger";
-import { getNewKeyboardMessage, getNewTextMessage } from "../common/common.contants";
 import { greetingsKeyboard } from "../greeting/greeting.constants";
 import { MESSAGE_TEXT } from "../common/messages-text";
 import { Cache } from "../cache";
+import { getNewKeyboardMessage, getNewTextMessage } from "../common/common.utils";
 
 export const initSubscribeHandler = (bot: IViberBot, mdb: IMDB, cache: Cache, logger: LoggerFacade) => {
 

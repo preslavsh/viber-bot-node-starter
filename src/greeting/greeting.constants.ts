@@ -1,7 +1,7 @@
 import { ViberKeyboard } from '../viber.interfaces';
-import { primaryColor, secondaryColor } from '../common/common.contants';
 import { BEGIN } from '../random/random.constants';
 import { MESSAGE_TEXT } from '../common/messages-text';
+import { primaryColor, secondaryColor } from "../common/common.utils";
 
 export const greetingsKeyboard: ViberKeyboard = {
     Type: "keyboard",
