@@ -10,14 +10,15 @@ import {
     CHAT_BOT_NAME,
     MONGODB_URI_LOCAL,
     NGROK_URL,
+    VIBER_PORT_LOCAL,
     VIBER_TOKEN_LOCAL
 } from './common/common.contants';
-import {initSetupHandler} from "./setup/setup.handler";
-import {initSettingsHandler} from "./settings/settings.handler";
+import { initSetupHandler } from "./setup/setup.handler";
+import { initSettingsHandler } from "./settings/settings.handler";
 import { LoggerFacade } from "./logger";
 import { Cache } from "./cache";
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || VIBER_PORT_LOCAL;
 const TOKEN = process.env.VIBER_TOKEN || VIBER_TOKEN_LOCAL;
 const webhookUrl = process.env.WEBHOOK || NGROK_URL;
 const MONGODB_URI = process.env.MONGODB_URI || MONGODB_URI_LOCAL;
@@ -26,8 +27,8 @@ export const Viber  = require('viber-bot');
 const ViberBot  = Viber.Bot;
 export const bot: IViberBot = new ViberBot({
     authToken: TOKEN,
-    name: CHAT_BOT_NAME,
-    avatar: CHAT_BOT_AVATAR,
+    name: process.env.CHAT_BOT_NAME || CHAT_BOT_NAME,
+    avatar: process.env.CHAT_BOT_AVATAR || CHAT_BOT_AVATAR,
     // Custom logger
     // logger: {
     //     debug: console.log,
