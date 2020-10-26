@@ -15,7 +15,6 @@ import {
 import {initSetupHandler} from "./setup/setup.handler";
 import {initSettingsHandler} from "./settings/settings.handler";
 import { LoggerFacade } from "./logger";
-import { initBroadcastHandler } from "./scripts/broacast.handler";
 import { Cache } from "./cache";
 
 const port = process.env.PORT || 3000;
@@ -55,7 +54,6 @@ export interface UserCache {
 const cache = new Cache();
 const logger = new LoggerFacade();
 
-initBroadcastHandler(bot, mdb, logger);
 initGreetingsHandler(bot, mdb, cache, logger);
 initSetupHandler(bot, mdb, cache, logger);
 initSettingsHandler(bot, mdb, cache, logger);

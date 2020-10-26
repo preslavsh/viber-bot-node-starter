@@ -8,6 +8,10 @@ interface ICache {
 export class Cache implements ICache {
     private readonly cache: Record<string, Partial<UserCache>> = {};
 
+    private setCache(userKey: string, cachedUser: Partial<UserCache>): void {
+        this.cache[userKey] = cachedUser;
+    }
+
     public get(key: string): Promise<Partial<UserCache>> {
         return Promise.resolve(this.cache[key]);
     }
@@ -19,9 +23,9 @@ export class Cache implements ICache {
                 ...cachedUser,
                 ...userProperties,
             };
-            this.set(userKey, cachedUser);
+            this.setCache(userKey, cachedUser);
         } else {
-            this.set(userKey, userProperties);
+            this.setCache(userKey, userProperties);
         }
     }
 
